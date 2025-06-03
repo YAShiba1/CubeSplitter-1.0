@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeSplitter : MonoBehaviour
 {
     [SerializeField] private CubeSpawner _cubeSpawner;
     [SerializeField] private CubeRayDetector _cubeRayDetector;
+    [SerializeField] private CubeExploder _cubeExploder;
 
     private void Update()
     {
@@ -20,12 +22,12 @@ public class CubeSplitter : MonoBehaviour
 
             if (Random.value < chanceOfSplit)
             {
-                _cubeSpawner.RandomSpawnOfReducedCubes(cube.transform, cube.transform.localScale);
-                cube.Explosion(_cubeSpawner.GetListOfSpawnedCubes(), cube.transform.position);
+                List<Cube> spawnedCubes = _cubeSpawner.CreateReducedCubes(cube.transform, cube.transform.localScale);
+
+                _cubeExploder.Explosion(spawnedCubes, cube.transform.position);
             }
 
             cube.SelfDestroy();
-            _cubeSpawner.ClearSpawnedCubeList();
         }
     }
 }

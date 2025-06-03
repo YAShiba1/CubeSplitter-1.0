@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 324759906}
   - component: {fileID: 324759905}
+  - component: {fileID: 324759907}
   m_Layer: 0
   m_Name: CubeSplitter
   m_TagString: Untagged
@@ -212,6 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cubeSpawner: {fileID: 331098965}
   _cubeRayDetector: {fileID: 1164639632}
+  _cubeExploder: {fileID: 324759907}
 --- !u!4 &324759906
 Transform:
   m_ObjectHideFlags: 0
@@ -227,6 +229,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &324759907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324759904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dbceaa8d8e594419cf76f8d6294478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionForce: 200
+  _explosionRadius: 10
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

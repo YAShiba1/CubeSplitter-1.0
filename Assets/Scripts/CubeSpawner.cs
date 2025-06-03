@@ -6,26 +6,15 @@ public class CubeSpawner : MonoBehaviour
     [SerializeField] private Cube _cubePrefab;
     [SerializeField] private Transform[] _spawnPoints;
 
-    private List<Cube> _spawnedCubes;
-
     private void Start()
     {
-        _spawnedCubes = new List<Cube>();
         SpawnStartingCubes();
     }
 
-    public void ClearSpawnedCubeList()
+    public List<Cube> CreateReducedCubes(Transform spawnPoimt, Vector3 scaleOfHittedCube)
     {
-        _spawnedCubes.Clear();
-    }
+        List<Cube> spawnedCubes = new();
 
-    public List<Cube> GetListOfSpawnedCubes()
-    {
-        return _spawnedCubes;
-    }
-
-    public void RandomSpawnOfReducedCubes(Transform spawnPoimt, Vector3 scaleOfHittedCube)
-    {
         int minRandomNumber = 2;
         int maxnRandomNumber = 7;
 
@@ -36,8 +25,10 @@ public class CubeSpawner : MonoBehaviour
             Cube newCube = CreateCube(spawnPoimt);
             newCube.ReduceScale(scaleOfHittedCube);
 
-            _spawnedCubes.Add(newCube);
+            spawnedCubes.Add(newCube);
         }
+
+        return spawnedCubes;
     }
 
     private Cube CreateCube(Transform spawnPoint)
